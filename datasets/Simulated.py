@@ -24,13 +24,17 @@ class Dataset(BaseDataset):
         # API to pass data. It is customizable for each benchmark.
 
         dataset_name = "FakeDataset"
-        data = MOABBDataset(dataset_name=dataset_name,
-                            subject_ids=None,
-                            dataset_kwargs={"event_list": ["left_hand", "right_hand"],
-                                            "paradigm": "imagery"})
+        data = MOABBDataset(
+            dataset_name=dataset_name,
+            subject_ids=None,
+            dataset_kwargs={
+                "event_list": ["left_hand", "right_hand"],
+                "paradigm": "imagery",
+            },
+        )
 
-        dataset, sfreq = windows_data(data, 'LeftRightImagery')
+        dataset, sfreq = windows_data(data, "LeftRightImagery")
 
-        return dict(dataset=dataset,
-                    paradigm_name='LeftRightImagery',
-                    sfreq=sfreq)
+        return dict(
+            dataset=dataset, paradigm_name="LeftRightImagery", sfreq=sfreq
+        )
